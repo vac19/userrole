@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Custom User Role Module registration.
+ * @category  Custom User Role
+ * @package   Salecto_NewUserRole
+ * @author    vashishtha
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Salecto_NewUserRole" setup_version="0.0.1">
+    </module>
+</config>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Salecto
+ * @package   Salecto\Advertisment
+ * @author    Salecto
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="salectoUserRole" xsi:type="object">Salecto\NewUserRole\Console\Command\NewUserRole</item>
+                <item name="salectoUserRole" xsi:type="object">Salecto\NewUserRole\Console\Command\SetUserRole</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
