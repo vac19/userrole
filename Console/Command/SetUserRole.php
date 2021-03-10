@@ -1,9 +1,9 @@
 <?php
 /*
- * Console Class for add Advertisment into DB table.
+ * Console Class for set role to user
  * @category  Salecto
  * @package   Salecto_Advertisment
- * @author    Salecto
+ * @author    Vashishtha
  */
 namespace Salecto\NewUserRole\Console\Command;
 
@@ -15,7 +15,7 @@ use Magento\User\Model\UserFactory;
 use Magento\Authorization\Model\RoleFactory;
 
 /**
- * Class SomeCommand
+ * Class for set role to user
  */
 class SetUserRole extends Command
 {
@@ -63,7 +63,7 @@ class SetUserRole extends Command
      */
     protected function configure()
     {
-        $this->setName('salecto:set:admin');
+        $this->setName('salecto:set:role');
         $this->setDescription('It will set user as administrator.');
         $this->addOption(
                 self::USERID,
@@ -92,8 +92,7 @@ class SetUserRole extends Command
     {
         $userId = $input->getOption(self::USERID);
         $roleId = $input->getOption(self::ROLEID);
-        if($userId && $roleId){
-            
+        if ($userId && $roleId) {
             $model = $this->_userFactory->create()->load($userId);
             $roleName = $this->checkRole($roleId);
             if ($userId && $model->isObjectNew()) {
@@ -106,14 +105,21 @@ class SetUserRole extends Command
               $model->save();
               $output->writeln('<info>User with id `'.$userId.'`set as `'.$roleName.'`</info>');
             }
-        }else{
+        } else {
             $output->writeln('<error>please set both userid and roleid, i.e. --userid=integer --roleid=integer</error>');
         }
     }
 
+    /**
+     * Execute the command
+     *
+     * @param role id $roleId
+     *
+     * @return null|0|string
+     */
     private function checkRole($roleId){
         $role = $this->_roleFactory->create()->load($roleId);
-        if($role->getId()){
+        if ($role->getId()) {
             return $role->getRoleName();
         } else {
             return 0;
